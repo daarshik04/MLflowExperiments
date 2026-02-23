@@ -62,6 +62,10 @@ if __name__ == "__main__":
         # Infer model signature and log the model
         predictions = lr.predict(train_x)
         signature = infer_signature(train_x, predictions)
+
+        #FOR  remote tracking server(DagsHub only)
+        remote_server_uri = "https://dagshub.com/daarshik04/MLflowExperiments.mlflow"
+        mlflow.set_tracking_uri(remote_server_uri)
         
         mlflow.sklearn.log_model(
             sk_model=lr, 
